@@ -1,0 +1,29 @@
+:root {
+  --minMargin: 20px;
+  --maxWidth: 800px;
+  --minFooterSpacing: 20px;
+}
+
+#app {
+  display: grid;
+  grid-template-rows:
+    1fr
+    var(--minFooterSpacing, 20px)
+    auto;
+  grid-template-columns:
+    minmax(var(--minMargin, 20px), 1fr)
+    minmax(auto, var(--maxWidth, 1024px))
+    minmax(var(--minMargin, 20px), 1fr);
+  min-height: 100vh;
+}
+
+#app main,
+#app footer {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+#app footer {
+  grid-row: -1 / span 1;
+}
