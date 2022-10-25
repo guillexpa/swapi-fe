@@ -39,33 +39,24 @@ const Home: NextPage = ({
 
   return (
     <Layout>
-      <div className="col-start-2 col-span-1 pt-6 flex flex-col justify-center items-center gap-10">
-        <Image
-          src="/logo.png"
-          width={'500'}
-          height={'214'}
-          alt="Star wars logo"
-          priority
-        />
-        <form
-          className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-end w-full"
-          onSubmit={onSubmit}
-        >
-          <label className="flex flex-col gap-1 flex-1">
-            Search films by title, characters or planets
-            <input
-              className="px-4 py-2 text-black"
-              type="text"
-              value={inputValue}
-              onChange={onChange}
-            />
-          </label>
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? <Spinner /> : 'Go'}
-          </Button>
-        </form>
-        <FilmList films={data} />
-      </div>
+      <form
+        className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-end w-full"
+        onSubmit={onSubmit}
+      >
+        <label className="flex flex-col gap-1 flex-1">
+          Search films by title, characters or planets
+          <input
+            className="px-4 py-2 text-black"
+            type="text"
+            value={inputValue}
+            onChange={onChange}
+          />
+        </label>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? <Spinner /> : 'Go'}
+        </Button>
+      </form>
+      <FilmList films={data} />
     </Layout>
   );
 };

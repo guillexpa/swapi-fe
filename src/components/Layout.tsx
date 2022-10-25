@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 
 function Layout({ children }: { children: React.ReactNode }) {
   const currentYear = new Date().getFullYear();
@@ -16,7 +17,18 @@ function Layout({ children }: { children: React.ReactNode }) {
         />
       </Head>
 
-      <main>{children}</main>
+      <main>
+        <div className="col-start-2 col-span-1 pt-6 flex flex-col justify-center items-center gap-10">
+          <Image
+            src="/logo.png"
+            width={'500'}
+            height={'214'}
+            alt="Star wars logo"
+            priority
+          />
+          {children}
+        </div>
+      </main>
 
       <footer>
         <div className="col-start-2 col-span-1 p-4 flex justify-center">

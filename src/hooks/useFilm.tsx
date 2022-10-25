@@ -1,13 +1,6 @@
+import { FilmType } from '@lib/types';
 import { fetcher } from '@lib/utils';
 import { useEffect, useState } from 'react';
-
-type FilmType = {
-  title: string;
-  episode_id: number;
-  release_date: string;
-  director: string;
-  producer: string;
-};
 
 const getFilmData = async (filmEndpoint: string) => {
   return await fetcher<FilmType>(filmEndpoint);
