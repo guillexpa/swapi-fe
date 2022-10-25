@@ -1,13 +1,13 @@
 import cn from 'classnames';
 import React, { ButtonHTMLAttributes } from 'react';
 
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   onClick?: () => any;
   children: React.ReactNode;
   type?: 'button' | 'submit';
   disabled?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+}
 
 function Button({
   onClick,
@@ -18,8 +18,8 @@ function Button({
   ...buttonProps
 }: ButtonProps) {
   const handleOnClick = () => {
-    if (disabled) return;
-    onClick && onClick();
+    if (disabled || !onClick) return;
+    onClick();
   };
 
   return (
@@ -27,8 +27,8 @@ function Button({
       className={cn(
         disabled
           ? 'bg-gray-400'
-          : 'bg-orange-600 hover:scale-105 transition-all cursor-pointer',
-        'px-4 py-2 bg-orange-600 rounded-sm',
+          : 'bg-orange-600 hover:opacity-70 transition-all duration-200 cursor-pointer',
+        'flex px-4 py-2 rounded-sm',
         className,
       )}
       disabled={disabled}
